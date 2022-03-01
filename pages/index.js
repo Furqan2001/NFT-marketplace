@@ -26,7 +26,7 @@ export default function Home() {
       provider
     );
     const NFTMarketContract = new ethers.Contract(
-      process.env.NFT_MARKET.ADDRESS,
+      process.env.NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       provider
     );
