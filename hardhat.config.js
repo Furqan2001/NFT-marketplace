@@ -1,6 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 const fs = require("fs");
-const privateKey = fs.readFileSync(".secret").toString();
+// const privateKey = fs.readFileSync(".secret").toString();
 
 module.exports = {
   solidity: "0.8.4",
@@ -10,11 +10,11 @@ module.exports = {
     },
     mumbai: {
       url: "https://rpc-mumbai.matic.today",
-      accounts: [privateKey]
+      accounts: [process.env.PRIVATE_KEY]
     },
     mainnet: {
       url: "https://polygon-rpc.com/",
-      accounts: [privateKey]
+      accounts: [process.env.PRIVATE_KEY]
     }
   }
 };

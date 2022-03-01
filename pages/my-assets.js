@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
-import { nftaddress, nftMarketAddress } from "../config";
+// import { nftaddress, nftMarketAddress } from "../config";
 
 export default function Home() {
   const [nfts, setNfts] = useState([]);
@@ -22,9 +22,13 @@ export default function Home() {
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
 
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
+    const tokenContract = new ethers.Contract(
+      process.env.NFT_ADDRESS,
+      NFT.abi,
+      provider
+    );
     const NFTMarketContract = new ethers.Contract(
-      nftMarketAddress,
+      process.env.NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       signer
     );

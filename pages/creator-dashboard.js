@@ -4,7 +4,7 @@ import axios from "axios";
 import Web3Modal from "web3modal";
 import Image from "next/image";
 
-import { nftMarketAddress, nftaddress } from "../config";
+// import { nftMarketAddress, nftaddress } from "../config";
 
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
@@ -24,9 +24,13 @@ export default function CreatorDashboard() {
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
 
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
+    const tokenContract = new ethers.Contract(
+      process.env.NFT_ADDRESS,
+      NFT.abi,
+      provider
+    );
     const NFTMarketContract = new ethers.Contract(
-      nftMarketAddress,
+      process.env.NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       signer
     );

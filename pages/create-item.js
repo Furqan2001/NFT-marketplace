@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import { nftaddress, nftMarketAddress } from "../config";
+// import { nftaddress, nftMarketAddress } from "../config";
 
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
@@ -62,7 +62,11 @@ function CreateItem() {
     const signer = provider.getSigner();
 
     let transaction;
-    let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+    let contract = new ethers.Contract(
+      process.env.NFT_ADDRESS,
+      NFT.abi,
+      signer
+    );
     try {
       transaction = await contract.createToken(url);
     } catch (err) {
@@ -74,7 +78,11 @@ function CreateItem() {
     const value = event.args[2];
     const tokenId = value.toNumber();
 
-    contract = new ethers.Contract(nftMarketAddress, NFTMarket.abi, signer);
+    contract = new ethers.Contract(
+      process.env.NFT_MARKET_ADDRESS,
+      NFTMarket.abi,
+      signer
+    );
     let listingPrice = await contract.getListingPrice();
     listingPrice = listingPrice.toString();
 
@@ -82,7 +90,7 @@ function CreateItem() {
 
     try {
       transaction = await contract.createMarketItem(
-        nftaddress,
+        process.env.NFT_ADDRESS,
         tokenId,
         price,
         {
