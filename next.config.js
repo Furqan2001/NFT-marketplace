@@ -2,7 +2,7 @@ module.exports = {
   images: {
     domains: ["ipfs.infura.io"],
     loader: "imgix",
-    path: ""
+    path: "/"
   },
   reactStrictMode: true
 };
