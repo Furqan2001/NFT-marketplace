@@ -10,11 +10,11 @@ module.exports = {
     },
     mumbai: {
       url: "https://rpc-mumbai.matic.today",
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: [process.env.NEXT_PUBLIC_PRIVATE_KEY]
     },
     mainnet: {
       url: "https://polygon-rpc.com/",
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: [process.env.NEXT_PUBLIC_PRIVATE_KEY]
     }
   }
 };

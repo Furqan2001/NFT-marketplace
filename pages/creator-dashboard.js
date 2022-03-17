@@ -25,12 +25,12 @@ export default function CreatorDashboard() {
     const signer = provider.getSigner();
 
     const tokenContract = new ethers.Contract(
-      process.env.NFT_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_ADDRESS,
       NFT.abi,
       provider
     );
     const NFTMarketContract = new ethers.Contract(
-      process.env.NFT_MARKET_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       signer
     );

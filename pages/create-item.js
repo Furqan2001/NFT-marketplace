@@ -63,7 +63,7 @@ function CreateItem() {
 
     let transaction;
     let contract = new ethers.Contract(
-      process.env.NFT_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_ADDRESS,
       NFT.abi,
       signer
     );
@@ -79,7 +79,7 @@ function CreateItem() {
     const tokenId = value.toNumber();
 
     contract = new ethers.Contract(
-      process.env.NFT_MARKET_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       signer
     );

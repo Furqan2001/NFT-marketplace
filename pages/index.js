@@ -20,13 +20,14 @@ export default function Home() {
     const provider = new ethers.providers.JsonRpcProvider(
       "https://rpc-mumbai.matic.today"
     );
+    console.log(process.env.NEXT_PUBLIC_NFT_ADDRESS);
     const tokenContract = new ethers.Contract(
-      process.env.NFT_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_ADDRESS,
       NFT.abi,
       provider
     );
     const NFTMarketContract = new ethers.Contract(
-      process.env.NFT_MARKET_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       provider
     );
@@ -59,14 +60,14 @@ export default function Home() {
 
     const signer = provider.getSigner();
     const nftMarketContract = new ethers.Contract(
-      process.env.NFT_MARKET_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS,
       NFTMarket.abi,
       signer
     );
 
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
     const transaction = await nftMarketContract.createMarketSale(
-      process.env.NFT_ADDRESS,
+      process.env.NEXT_PUBLIC_NFT_ADDRESS,
       nft.itemId,
       { value: price }
     );
