@@ -20,7 +20,7 @@ export default function Home() {
     const provider = new ethers.providers.JsonRpcProvider(
       "https://rpc-mumbai.matic.today"
     );
-    console.log(process.env.NEXT_PUBLIC_NFT_ADDRESS);
+
     const tokenContract = new ethers.Contract(
       process.env.NEXT_PUBLIC_NFT_ADDRESS,
       NFT.abi,
